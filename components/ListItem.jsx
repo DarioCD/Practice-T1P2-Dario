@@ -1,9 +1,12 @@
-import { StyleSheet, Text, View, Image} from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 
 const ListItem = ({
+    id,
+    productBought,
     productName,
     productQuantity,
-    productType
+    productType,
+    onProductRemove,
 }) => {
     let photo = "";
     if (productType === "fruit") {
@@ -19,12 +22,23 @@ const ListItem = ({
     }
 
     return (
-        <View style={styles.listItem}>
-            <Image style={styles.productImage} source={photo} />
-            <Text style={styles.compra}>
-                {productQuantity} x {productName}
-            </Text>
-        </View>
+        <Pressable onPress={() => onProductRemove(id)}>
+            {productBought ? (
+                <View style={styles.listItemBought}>
+                    <Image style={styles.productImage} source={photo} />
+                    <Text style={styles.compraBought}>
+                        {productQuantity} x {productName}
+                    </Text>
+                </View>
+            ) : (
+                <View style={styles.listItem}>
+                    <Image style={styles.productImage} source={photo} />
+                    <Text style={styles.compra}>
+                        {productQuantity} x {productName}
+                    </Text>
+                </View>
+            )}
+        </Pressable>
     );
 };
 
@@ -52,5 +66,24 @@ const styles = StyleSheet.create({
     compra: {
         marginRight: 20,
         fontSize: 30,
-    }
+    },
+    listItemBought: {
+        marginBottom: 10,
+        padding: 4,
+        borderRadius: 10,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "100%",
+        backgroundColor: "grey",
+        shadowOffset: { width: -1, height: 5 },
+        shadowColor: "#171717",
+        shadowOpacity: 1,
+        shadowRadius: 3,
+    },
+    compraBought: {
+        marginRight: 20,
+        fontSize: 30,
+        textDecorationLine: "line-through",
+    },
 });
