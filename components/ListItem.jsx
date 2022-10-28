@@ -3,11 +3,24 @@ import { StyleSheet, Text, View, Image} from "react-native";
 const ListItem = ({
     productName,
     productQuantity,
+    productType
 }) => {
+    let photo = "";
+    if (productType === "fruit") {
+        photo = require("../assets/fruta_Goyo.png");
+    } else if (productType === "vegetable") {
+        photo = require("../assets/vegetable_Goyo.png");
+    } else if (productType === "bakery") {
+        photo = require("../assets/bakery_Goyo.png");
+    } else if (productType === "fish") {
+        photo = require("../assets/fish_Goyo.png");
+    } else if (productType === "meat") {
+        photo = require("../assets/meat_Goyo.png");
+    }
 
     return (
         <View style={styles.listItem}>
-            <Image style={styles.productImage} source={require("../assets/fruta_Goyo.png")} />
+            <Image style={styles.productImage} source={photo} />
             <Text style={styles.compra}>
                 {productQuantity} x {productName}
             </Text>
