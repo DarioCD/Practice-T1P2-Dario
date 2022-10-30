@@ -19,7 +19,6 @@ export default function App() {
     };
 
     const removeProductHandler = (productID) => {
-        // setProducts(() => products.filter((product) => product.id != productID));
         setProducts(
             products.map((product) => {
                 if (product.id === productID) {
@@ -41,8 +40,6 @@ export default function App() {
     const clearList = (products) => {
         if (products.length > 0) {
             setProducts([]);
-        } else {
-            console.log("NO PUEDES BORRAR, SINO SELECCIONAS NADA CABESA");
         }
     };
     return (

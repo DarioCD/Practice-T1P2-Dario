@@ -5,19 +5,16 @@ import ModalSelector from 'react-native-modal-selector';
 const ProductInput = ({ onProductAdd }) => {
     const [productName, setProductName] = useState('');
     const changeTextHandlerName = (value) => {
-        console.log('valor de name : ', value);
         setProductName(value);
     }
     const [productQuantity, setProductQuantity] = useState('Cantidad:');
     const changeTextHandlerQuantity = (value) => {
         value = value.label
-        console.log('valor de quantity : ', value);
         setProductQuantity(value);
     }
     const [productType, setproductType] = useState('Típo:');
     const changeTextHandlerProduct = (value) => {
         value = value.label
-        console.log('valor de type : ', value);
         setproductType(value);
     }
     const addProductHandler = () => {
@@ -30,6 +27,7 @@ const ProductInput = ({ onProductAdd }) => {
         setProductName('');
         setProductQuantity('Cantidad:');
         setproductType('Típo:');
+        console.log(`\n-------------------\nPRODUCTO AÑDIDO:\nNOMBRE : ${sanitizedName}\nCANTIDAD : ${sanitizedQuantity}\nTIPO : ${sanitizedType}\n-------------------`);
     }
     const dataType = [
         { key: 1, section: true, label: 'Típo' },
@@ -73,7 +71,7 @@ const ProductInput = ({ onProductAdd }) => {
                     data={dataType}
                     initValue={productType}
                     onChange={changeTextHandlerProduct} />
-                <Button style={styles.productButton} color="black"
+                <Button color="black"
                     title='Añadir'
                     onPress={addProductHandler}>
                 </Button>
@@ -113,9 +111,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderWidth: 1,
         borderColor: 'lightgrey'
-    },
-    productButton: {
-
     },
     productQuantity: {
         backgroundColor: 'black',

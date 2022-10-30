@@ -24,14 +24,14 @@ const ListItem = ({
     return (
         <Pressable onPress={() => onProductRemove(id)}>
             {productBought ? (
-                <View style={styles.listItemBought}>
+                <View style={styles.listItem} backgroundColor="grey">
                     <Image style={styles.productImage} source={photo} />
                     <Text style={styles.compraBought}>
                         {productQuantity} x {productName}
                     </Text>
                 </View>
             ) : (
-                <View style={styles.listItem}>
+                <View style={styles.listItem} backgroundColor="#FFAE3B">
                     <Image style={styles.productImage} source={photo} />
                     <Text style={styles.compra}>
                         {productQuantity} x {productName}
@@ -66,20 +66,6 @@ const styles = StyleSheet.create({
     compra: {
         marginRight: 20,
         fontSize: 30,
-    },
-    listItemBought: {
-        marginBottom: 10,
-        padding: 4,
-        borderRadius: 10,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: "100%",
-        backgroundColor: "grey",
-        shadowOffset: { width: -1, height: 5 },
-        shadowColor: "#171717",
-        shadowOpacity: 1,
-        shadowRadius: 3,
     },
     compraBought: {
         marginRight: 20,
